@@ -7,20 +7,23 @@ Một dashboard thị trường cryptocurrency với dữ liệu thời gian th�
 - 📊 Bảng giá thị trường với top 50 cryptocurrency
 - 📈 Trang chi tiết token với biểu đồ giá
 - 🔄 Biểu đồ đường và biểu đồ nến
-- 📱 Responsive design
-- ⚡ Dữ liệu thời gian thực
+- 📱 Responsive design với dark theme
+- ⚡ Dữ liệu thời gian thực từ Binance API
+- 🎯 Flask backend với built-in HTML frontend
+- 🔧 RESTful API endpoints
+- 📊 Interactive charts với Chart.js
 
 ## Cấu trúc dự án
 
 ```
 Crypto_PTDL/
-├── main.py                 # FastAPI backend
+├── main.py                 # Flask backend server
 ├── data.py                 # Script lấy dữ liệu lịch sử
 ├── dataud.py              # Script cập nhật dữ liệu hàng ngày
 ├── create_token_info.py   # Script tạo thông tin token
 ├── requirements.txt       # Python dependencies
 ├── start-dev.bat         # Script khởi động development
-├── frontend/             # React frontend
+├── frontend/             # React frontend (optional)
 │   ├── package.json
 │   ├── public/
 │   └── src/
@@ -59,14 +62,33 @@ python dataud.py
 start-dev.bat
 
 # Hoặc chạy thủ công:
-# Terminal 1 - Backend
-uvicorn main:app --reload
+# Terminal 1 - Flask Backend
+python main.py
 
-# Terminal 2 - Frontend
+# Terminal 2 - React Frontend (optional, Flask đã có built-in frontend)
 cd frontend
 npm install
 npm start
 ```
+
+**Lưu ý**: Flask server đã tích hợp sẵn frontend HTML trong `main.py`, có thể truy cập trực tiếp tại `http://127.0.0.1:5000`
+
+## Flask Server
+
+### Cấu hình server
+Flask server chạy trên:
+- **Host**: 127.0.0.1 (localhost)
+- **Port**: 5000
+- **Debug mode**: Enabled (development)
+- **CORS**: Enabled cho tất cả origins
+
+### Built-in Frontend
+Flask server bao gồm một HTML template tích hợp với:
+- Dark theme hiện đại
+- Responsive design
+- Interactive charts (Chart.js)
+- Real-time data updates
+- Token detail views với candlestick charts
 
 ## API Endpoints
 
@@ -87,7 +109,7 @@ Cập nhật thông tin kết nối trong các file:
 MYSQL_CONFIG = {
     'host': 'localhost',
     'user': 'root',
-    'password': 'your_password',
+    'password': '23082004',  # Thay đổi password của bạn
     'database': 'crypto_data'
 }
 ```
@@ -127,7 +149,12 @@ Hoặc thiết lập cron job để tự động cập nhật.
 - Kiểm tra kết nối internet
 - Binance API có thể có rate limit, script đã có delay 1s giữa các request
 
-### Lỗi React
+### Lỗi Flask
+- Kiểm tra Python version >= 3.8
+- Cài đặt lại dependencies: `pip install -r requirements.txt`
+- Kiểm tra port 5000 có bị chiếm dụng không
+
+### Lỗi React (nếu sử dụng frontend riêng)
 - Xóa `node_modules` và chạy lại `npm install`
 - Kiểm tra Node.js version >= 16
 
