@@ -1,0 +1,34 @@
+ĐÁNH GIÁ DỰ ÁN CRYPTO MARKET ANALYSIS DASHBOARD
+
+1. Dữ liệu
+- Nguồn dữ liệu: Binance (giá OHLCV, volume), CoinGecko (market cap, dominance), Alternative.me (Fear & Greed). Phù hợp với mục tiêu phân tích thị trường crypto.
+- Quy mô: Bao phủ 50 token lớn với lịch sử tối đa 365 ngày, kết hợp cập nhật gần real-time → đủ lớn cho phân tích xu hướng ngắn và trung hạn.
+- Tự thu thập: Các script Python (`data.py`, `dataud.py`, `update_market_cap_data.py`, …) tự động gọi API và lưu MySQL giúp kiểm soát chất lượng, không lệ thuộc dataset tĩnh.
+- Khuyến nghị: Có thể mở rộng thêm nguồn sentiment/social để gia tăng chiều thông tin.
+
+2. Tiền xử lý dữ liệu
+- Thực hiện ép kiểu, chuẩn hóa timestamp, loại bỏ record lỗi trước khi insert DB. Các script mô tả rõ forward/backward fill cho missing, xử lý outlier bằng z-score (theo README).
+- Feature engineering đa dạng: momentum (3/7 ngày), volatility 14 ngày, volume ratio, trend strength, price change %, volume SMA20… phù hợp làm input cho mô hình.
+- Đề xuất: Hiện README mô tả xử lý outlier, nên bổ sung minh chứng/runnable code cụ thể để đảm bảo tính nhất quán giữa tài liệu và implement.
+
+3. Phương pháp phân tích/mô hình
+- Áp dụng song song 3 nhánh: (1) Statistical (EMA + WMA với bias từ RSI/MACD/Bollinger), (2) Học máy (Multivariate Linear Regression với 15 features), (3) Học sâu (Neural Network 10-step lookback, 24 hidden units).
+- Có chia train/validation 80/20 và đánh giá MAE, RMSE, MAPE, Accuracy. Quy trình hợp lý cho chuỗi thời gian crypto ngắn hạn.
+- Gợi ý: Khi mở rộng horizon dài, có thể thêm LSTM/Transformer hoặc mô hình Prophet để so sánh.
+
+4. Dashboard / Visualization
+- Dashboard gồm nhiều trang chức năng rõ ràng: Home (heatmap, gainers/losers, overview), Market Indicators (Fear & Greed, Market Cap Trend, Dominance, Volume), Token Analysis (candlestick + indicators + prediction), Investment Tools (DCA, portfolio).
+- Biểu đồ sử dụng Chart.js/React-Chartjs-2 với theme tối, có animation bằng Framer Motion → trực quan và hiện đại.
+- Cần theo dõi sự trùng lặp thông tin giữa heatmap và volume chart để tránh quá tải trên cùng trang; có thể gom hoặc bật/tắt theo nhu cầu.
+
+5. Tính thực tiễn
+- Giúp nhà đầu tư theo dõi thị trường real-time, nhận cảnh báo/khuyến nghị BUY-SELL-HOLD dựa trên đa mô hình.
+- Hỗ trợ lập kế hoạch DCA, theo dõi danh mục và đánh giá hiệu quả chiến lược.
+- Có thể tích hợp thêm alert API, push notification hoặc kết nối trading bot để nâng tính ứng dụng.
+
+6. Điểm mạnh nổi bật
+- Pipeline end-to-end hoàn chỉnh: thu thập → lưu trữ → tính chỉ báo → mô hình hóa → dashboard.
+- Feature engineering phong phú trước khi huấn luyện giúp mô hình tận dụng cả price action lẫn indicators.
+- Giao diện chia thành các trang chuyên biệt, kết hợp heatmap, prediction box, portfolio tools → thân thiện với cả người xem nhanh lẫn analyst chuyên sâu.
+
+

@@ -1,0 +1,310 @@
+.App {
+  min-height: 100vh;
+  background-color: #0a0a0a;
+}
+
+.main-content {
+  padding-top: 80px;
+}
+
+/* Header Styles */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #1f2937;
+  z-index: 1000;
+  padding: 1rem 0;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-link {
+  color: #9ca3af;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #ffffff;
+}
+
+/* Market Table Styles */
+.market-container {
+  padding: 2rem 0;
+}
+
+.market-header {
+  margin-bottom: 2rem;
+}
+
+.market-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.market-subtitle {
+  color: #9ca3af;
+  font-size: 16px;
+}
+
+.table-container {
+  background-color: #111827;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #1f2937;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  background-color: #1f2937;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #374151;
+}
+
+.table td {
+  padding: 1rem;
+  border-bottom: 1px solid #1f2937;
+  color: #ffffff;
+}
+
+.table tbody tr:hover {
+  background-color: #1f2937;
+}
+
+.token-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.token-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.token-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.token-symbol {
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.token-symbol:hover {
+  color: #3b82f6;
+}
+
+.token-name {
+  font-size: 14px;
+  color: #9ca3af;
+}
+
+.price-cell {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.change-cell {
+  font-weight: 600;
+}
+
+.volume-cell {
+  color: #9ca3af;
+}
+
+/* Token Detail Styles */
+.token-detail-container {
+  padding: 2rem 0;
+}
+
+.token-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.token-header-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+}
+
+.token-header-info h1 {
+  font-size: 32px;
+  margin-bottom: 0.5rem;
+}
+
+.token-header-info p {
+  color: #9ca3af;
+  font-size: 18px;
+}
+
+.back-button {
+  margin-bottom: 2rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background-color: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.stat-label {
+  color: #9ca3af;
+  font-size: 14px;
+  margin-bottom: 0.5rem;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.chart-container {
+  background-color: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.chart-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.chart-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.chart-type-toggle {
+  display: flex;
+  background-color: #1f2937;
+  border-radius: 8px;
+  padding: 4px;
+}
+
+.chart-type-btn {
+  padding: 8px 16px;
+  border: none;
+  background: transparent;
+  color: #9ca3af;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.chart-type-btn.active {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.period-selector {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.period-btn {
+  padding: 8px 12px;
+  border: 1px solid #374151;
+  background: transparent;
+  color: #9ca3af;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.period-btn.active {
+  background-color: #3b82f6;
+  border-color: #3b82f6;
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .nav {
+    gap: 1rem;
+  }
+  
+  .table-container {
+    overflow-x: auto;
+  }
+  
+  .table {
+    min-width: 800px;
+  }
+  
+  .chart-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  
+  .chart-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
